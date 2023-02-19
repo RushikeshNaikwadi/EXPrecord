@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './Models/TransactionClass.dart';
+
 void main() => runApp(EXPrecord());
 
 class EXPrecord extends StatelessWidget {
@@ -13,6 +15,21 @@ class EXPrecord extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final List<TransactionClass> txnList = [
+    TransactionClass(
+        txnId: 't1',
+        txnTitle: 'Cello Gripper',
+        txnAmount: 10,
+        txnDateTime: DateTime.now()
+    ),
+    TransactionClass(
+        txnId: 't2',
+        txnTitle: 'Notebook',
+        txnAmount: 60,
+        txnDateTime: DateTime.now()
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +45,15 @@ class MyHomePage extends StatelessWidget {
             elevation: 5,
             child: Text('CHART!'),
           ),
-          Card(
-            color: Colors.grey,
-            elevation: 5,
-            child: Text('LIST OF TX'),
-          ),
+          Column(
+            children: txnList.map((eachTxn) {
+              return Card(
+                child: Text(
+                  eachTxn.txnTitle
+                ),
+              );
+            }).toList()
+          )
         ],
       ),
     );
