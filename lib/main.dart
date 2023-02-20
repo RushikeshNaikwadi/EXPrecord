@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './Models/TransactionClass.dart';
 
@@ -48,19 +49,59 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: txnList.map((eachTxn) {
               return Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.purpleAccent,
+                    ),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                color: Colors.grey[300],
                 child: Row(
                   children: [
                     Container(
-                      child: Text('${eachTxn.txnAmount.toString()}'),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 9
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 9
+                      ),
+                      child: Text(
+                          '₹ ${eachTxn.txnAmount}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple
+                        ),
+                      ),
                     ),
+                    SizedBox(width: 10),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          eachTxn.txnTitle.toString()
+                          eachTxn.txnTitle.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
+                        SizedBox(height: 5),
                         Text(
-                            eachTxn.txnDateTime.toString()
-                        )
+                          DateFormat.yMMMd().add_jm().format(eachTxn.txnDateTime),
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 16,
+                          ),
+                        ),
                       ],
                     )
                   ],
