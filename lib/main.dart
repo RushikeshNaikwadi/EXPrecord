@@ -30,6 +30,18 @@ class MyHomePage extends StatelessWidget {
         txnTitle: 'Notebook',
         txnAmount: 60,
         txnDateTime: DateTime.now()
+    ),
+    TransactionClass(
+        txnId: 't3',
+        txnTitle: 'Water Bottle',
+        txnAmount: 20,
+        txnDateTime: DateTime.now()
+    ),
+    TransactionClass(
+        txnId: 't4',
+        txnTitle: 'Coco Cola',
+        txnAmount: 40,
+        txnDateTime: DateTime.now()
     )
   ];
 
@@ -44,6 +56,38 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ChartWidget(),
+          Card(
+            color: Colors.cyanAccent,
+            elevation: 10,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title'
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount'
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                          'Add Transaction',
+                        style: TextStyle(
+                          color: Colors.purpleAccent,
+                        ),
+                      ),
+                  )
+                ],
+              ),
+            )
+          ),
           TxnListWidget(txnList: txnList)
         ],
       ),
