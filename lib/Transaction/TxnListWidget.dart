@@ -12,10 +12,15 @@ class TxnListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: txnList.map((eachTxn) {
-          return TransactionWidget(curTxn: eachTxn);
-        }).toList()
+    return Container(
+      height: 460,
+      child: SingleChildScrollView(
+        child: Column(
+            children: txnList.map((eachTxn) {
+              return TransactionWidget(curTxn: eachTxn);
+            }).toList()
+        ),
+      ),
     );
   }
 }
